@@ -12,14 +12,14 @@ package modelo;
 public class ContaModel {
 
     //Chave estrangeira
-    private String numeroConta;
-    private String nomeCliente;
-    private String rua;
-    private String bairro;
-    private String cidade;
-    private String estado;
-    private String numeroCasa;
-    private String cep;
+    private String numeroConta = "";
+    private String nomeCliente = "";
+    private String rua = "";
+    private String bairro = "";
+    private String cidade = "";
+    private String estado = "";
+    private String numeroCasa = "";
+    private String cep = "";
 
     public ContaModel() {
     }

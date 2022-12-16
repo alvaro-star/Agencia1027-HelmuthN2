@@ -1,4 +1,3 @@
-
 package visao;
 
 import javax.swing.JFrame;
@@ -20,13 +19,45 @@ public class Principal extends javax.swing.JFrame {
     private void initComponents() {
 
         jpDesktop = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
         JBCriar_Conta = new javax.swing.JButton();
-        JBRemover_Conta = new javax.swing.JButton();
         JBAlterar_Conta = new javax.swing.JButton();
+        JBRemover_Conta = new javax.swing.JButton();
         JBMostrar_Contas = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Agência 1027");
+
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null}
+            },
+            new String [] {
+                "NConta", "Nome User", "Rua", "NCasa", "Bairro", "Cidade", "Estado"
+            }
+        ));
+        jScrollPane1.setViewportView(jTable1);
+
+        javax.swing.GroupLayout jpDesktopLayout = new javax.swing.GroupLayout(jpDesktop);
+        jpDesktop.setLayout(jpDesktopLayout);
+        jpDesktopLayout.setHorizontalGroup(
+            jpDesktopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jpDesktopLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 509, Short.MAX_VALUE))
+        );
+        jpDesktopLayout.setVerticalGroup(
+            jpDesktopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jpDesktopLayout.createSequentialGroup()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 311, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(42, Short.MAX_VALUE))
+        );
 
         JBCriar_Conta.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         JBCriar_Conta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/create.png"))); // NOI18N
@@ -37,40 +68,21 @@ public class Principal extends javax.swing.JFrame {
             }
         });
 
-        JBRemover_Conta.setText("Remover Conta");
-
         JBAlterar_Conta.setText("Alterar Conta");
+        JBAlterar_Conta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JBAlterar_ContaActionPerformed(evt);
+            }
+        });
+
+        JBRemover_Conta.setText("Remover Conta");
+        JBRemover_Conta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JBRemover_ContaActionPerformed(evt);
+            }
+        });
 
         JBMostrar_Contas.setText("Mostrar Contas");
-
-        javax.swing.GroupLayout jpDesktopLayout = new javax.swing.GroupLayout(jpDesktop);
-        jpDesktop.setLayout(jpDesktopLayout);
-        jpDesktopLayout.setHorizontalGroup(
-            jpDesktopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpDesktopLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(JBCriar_Conta)
-                .addGap(18, 18, 18)
-                .addGroup(jpDesktopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(JBMostrar_Contas)
-                    .addGroup(jpDesktopLayout.createSequentialGroup()
-                        .addComponent(JBRemover_Conta)
-                        .addGap(18, 18, 18)
-                        .addComponent(JBAlterar_Conta)))
-                .addGap(38, 38, 38))
-        );
-        jpDesktopLayout.setVerticalGroup(
-            jpDesktopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jpDesktopLayout.createSequentialGroup()
-                .addGap(85, 85, 85)
-                .addGroup(jpDesktopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(JBCriar_Conta)
-                    .addComponent(JBRemover_Conta)
-                    .addComponent(JBAlterar_Conta))
-                .addGap(49, 49, 49)
-                .addComponent(JBMostrar_Contas)
-                .addContainerGap(119, Short.MAX_VALUE))
-        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -78,25 +90,51 @@ public class Principal extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jpDesktop, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(JBAlterar_Conta)
+                    .addComponent(JBRemover_Conta)
+                    .addComponent(JBMostrar_Contas)
+                    .addComponent(JBCriar_Conta, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addComponent(jpDesktop, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(JBCriar_Conta, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(JBAlterar_Conta)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(JBRemover_Conta)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(JBMostrar_Contas)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void JBCriar_ContaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBCriar_ContaActionPerformed
-        // TODO add your handling code here:
         FormPadrao formulario = new FormPadrao();
         jpDesktop.add(formulario);
         formulario.setVisible(true);
-        
     }//GEN-LAST:event_JBCriar_ContaActionPerformed
+
+    private void JBAlterar_ContaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBAlterar_ContaActionPerformed
+        FormEdit formularioEdit = new FormEdit();
+        jpDesktop.add(formularioEdit);
+        formularioEdit.setVisible(true);
+    }//GEN-LAST:event_JBAlterar_ContaActionPerformed
+
+    private void JBRemover_ContaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBRemover_ContaActionPerformed
+        FormDelete formularioDelete = new FormDelete();
+        jpDesktop.add(formularioDelete);
+        formularioDelete.setVisible(true);
+    }//GEN-LAST:event_JBRemover_ContaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -138,6 +176,8 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JButton JBCriar_Conta;
     private javax.swing.JButton JBMostrar_Contas;
     private javax.swing.JButton JBRemover_Conta;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable jTable1;
     private javax.swing.JPanel jpDesktop;
     // End of variables declaration//GEN-END:variables
 }
