@@ -11,13 +11,11 @@ import modelo.ContaModel;
 
 public class FormEdit extends javax.swing.JInternalFrame {
 
-    private ContaModel conta = new ContaModel();
-    private ContaControle controller = new ContaControle();
+    private final ContaModel conta = new ContaModel();
+    private final ContaControle controller = new ContaControle();
 
     public FormEdit() {
         initComponents();
-        conta = new ContaModel();
-        controller = new ContaControle();
     }
 
     @SuppressWarnings("unchecked")
@@ -264,14 +262,12 @@ public class FormEdit extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jbFecharActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbFecharActionPerformed
-
         dispose();
     }//GEN-LAST:event_jbFecharActionPerformed
 
     private void jSendMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jSendMouseClicked
         try {
-            controller.update(conta.getNumeroConta(), conta);
-            conta.imprimir();
+            controller.update(conta);
             dispose();
         } catch (SQLException e) {
             System.out.println(e.getMessage());

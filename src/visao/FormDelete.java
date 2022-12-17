@@ -11,8 +11,8 @@ import modelo.ContaModel;
 
 public class FormDelete extends javax.swing.JInternalFrame {
 
-    private ContaModel conta = new ContaModel();
-    private ContaControle controller = new ContaControle();
+    private final ContaModel conta = new ContaModel();
+    private final ContaControle controller = new ContaControle();
 
     public FormDelete() {
         initComponents();

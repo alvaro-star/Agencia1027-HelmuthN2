@@ -57,10 +57,10 @@ public class MainTeste {
                     modelo.setNumeroCasa("1739");
                     modelo.setRua("Rua Cristobal");
 
-                    System.out.print("Digite o numero da conta onde qeur inserir estes dados: ");
+                    System.out.print("Digite o numero da conta onde quer inserir estes dados: ");
                     scan = new Scanner(System.in);
-                    String numeroConta1 = scan.nextLine();
-                    controller.update(numeroConta1, modelo);
+                    modelo.setNumeroConta(scan.nextLine());
+                    controller.update(modelo);
 
                     break;
 
@@ -75,7 +75,6 @@ public class MainTeste {
                     modelo1.setNumeroCasa("1739");
                     modelo1.setRua("Rua Colombo");
 
-                    
                     System.out.print("Digite um numero de conta novo: ");
                     scan = new Scanner(System.in);
                     modelo1.setNumeroConta(scan.nextLine());

@@ -11,8 +11,8 @@ import modelo.ContaModel;
 
 public class FormPadrao extends javax.swing.JInternalFrame {
 
-    private ContaModel conta = new ContaModel();
-    private ContaControle controller = new ContaControle();
+    private final ContaModel conta = new ContaModel();
+    private final ContaControle controller = new ContaControle();
 
     public FormPadrao() {
         initComponents();
@@ -268,9 +268,7 @@ public class FormPadrao extends javax.swing.JInternalFrame {
 
     private void jSendMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jSendMouseClicked
         try {
-            //System.out.println(jtNome_Cliente.getText());
             controller.insert(conta);
-            conta.imprimir();
             dispose();
         } catch (SQLException e) {
             System.out.println(e.getMessage());
