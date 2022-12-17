@@ -86,14 +86,14 @@ public class ContaModel {
     }
 
     public void imprimir() {
-        System.out.println(this.numeroConta);
-        System.out.println(this.nomeCliente);
-        System.out.println(this.rua);
-        System.out.println(this.bairro);
-        System.out.println(this.cidade);
-        System.out.println(this.estado);
-        System.out.println(this.numeroCasa);
-        System.out.println(this.cep);
+        System.out.println("N conta: " + this.numeroConta);
+        System.out.println("Nome Clinete: " + this.nomeCliente);
+        System.out.println("Rua: " + this.rua);
+        System.out.println("Bairro: " + this.bairro);
+        System.out.println("Cidade: " + this.cidade);
+        System.out.println("Estado: " + this.estado);
+        System.out.println("NCasa: " + this.numeroCasa);
+        System.out.println("Cep: " + this.cep);
     }
 
 }

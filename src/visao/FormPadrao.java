@@ -262,12 +262,12 @@ public class FormPadrao extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jbFecharActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbFecharActionPerformed
-        // TODO add your handling code here:
         dispose();
     }//GEN-LAST:event_jbFecharActionPerformed
 
     private void jSendMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jSendMouseClicked
         try {
+            conta.setCep(jtfCep.getText());
             controller.insert(conta);
             dispose();
         } catch (SQLException e) {

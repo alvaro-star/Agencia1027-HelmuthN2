@@ -40,7 +40,7 @@ public class ContaControle {
     }
 
     public ContaModel getOne(String numeroConta) throws SQLException {
-        String sql = "SELECT * FROM `conta` WHERE `numeroConta` = '?'";
+        String sql = "SELECT * FROM `conta` WHERE `numeroConta` = ?";
 
         Connection con = ConexaoBanco.abreConexao();
         PreparedStatement statement = con.prepareStatement(sql);
@@ -64,7 +64,7 @@ public class ContaControle {
     }
 
     public void update(ContaModel conta) throws SQLException {
-        String sql = "UPDATE `conta` SET `nomeCliente` = '?', `rua` = '?', `bairro` = '?', `cidade` = '?', `estado` = '?', `numeroCasa` = '?', `cep` = '?' WHERE `conta`.`numeroConta` = '?'";
+        String sql = "UPDATE `conta` SET `nomeCliente` = ?, `rua` = ?, `bairro` = ?, `cidade` = ?, `estado` = ?, `numeroCasa` = ?, `cep` = ? WHERE `conta`.`numeroConta` = ?";
 
         Connection con = ConexaoBanco.abreConexao();
         PreparedStatement statement = con.prepareStatement(sql);
@@ -94,7 +94,7 @@ public class ContaControle {
     }
 
     public void insert(ContaModel conta) throws SQLException {
-        String sql = "INSERT INTO `conta` (`numeroConta`, `nomeCliente`, `rua`, `bairro`, `cidade`, `estado`, `numeroCasa`, `cep`) VALUES ('?', '?', '?', '?', '?', '?', '?', '?')";
+        String sql = "INSERT INTO `conta` (`numeroConta`, `nomeCliente`, `rua`, `bairro`, `cidade`, `estado`, `numeroCasa`, `cep`) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
 
         Connection con = ConexaoBanco.abreConexao();
         PreparedStatement statement = con.prepareStatement(sql);
@@ -107,7 +107,6 @@ public class ContaControle {
         statement.setString(6, conta.getEstado());
         statement.setString(7, conta.getNumeroCasa());
         statement.setString(8, conta.getCep());
-
         statement.execute();
     }
 }

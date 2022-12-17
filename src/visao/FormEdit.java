@@ -267,6 +267,7 @@ public class FormEdit extends javax.swing.JInternalFrame {
 
     private void jSendMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jSendMouseClicked
         try {
+            conta.setCep(jtfCep.getText());
             controller.update(conta);
             dispose();
         } catch (SQLException e) {

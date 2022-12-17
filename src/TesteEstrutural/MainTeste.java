@@ -78,6 +78,7 @@ public class MainTeste {
                     System.out.print("Digite um numero de conta novo: ");
                     scan = new Scanner(System.in);
                     modelo1.setNumeroConta(scan.nextLine());
+                    modelo1.imprimir();
                     controller.insert(modelo1);
 
                     break;
