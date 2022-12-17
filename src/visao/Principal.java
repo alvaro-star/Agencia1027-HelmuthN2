@@ -1,8 +1,14 @@
 package visao;
 
+import controle.ContaControle;
+import java.sql.SQLException;
 import javax.swing.JFrame;
+import javax.swing.table.DefaultTableModel;
+import modelo.ContaModel;
 
 public class Principal extends javax.swing.JFrame {
+
+    private ContaControle controller = new ContaControle();
 
     public Principal() {
         initComponents();
@@ -20,7 +26,7 @@ public class Principal extends javax.swing.JFrame {
 
         jpDesktop = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        jTableConta = new javax.swing.JTable();
         JBCriar_Conta = new javax.swing.JButton();
         JBAlterar_Conta = new javax.swing.JButton();
         JBRemover_Conta = new javax.swing.JButton();
@@ -29,35 +35,18 @@ public class Principal extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Agência 1027");
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        jTableConta.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null}
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "NConta", "Nome User", "Rua", "NCasa", "Bairro", "Cidade", "Estado"
+                "NConta", "Nome User", "Rua", "NCasa", "Bairro", "Cidade", "Estado", "Cep"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
-
-        javax.swing.GroupLayout jpDesktopLayout = new javax.swing.GroupLayout(jpDesktop);
-        jpDesktop.setLayout(jpDesktopLayout);
-        jpDesktopLayout.setHorizontalGroup(
-            jpDesktopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jpDesktopLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 509, Short.MAX_VALUE))
-        );
-        jpDesktopLayout.setVerticalGroup(
-            jpDesktopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jpDesktopLayout.createSequentialGroup()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 311, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(42, Short.MAX_VALUE))
-        );
+        jScrollPane1.setViewportView(jTableConta);
 
         JBCriar_Conta.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         JBCriar_Conta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/create.png"))); // NOI18N
@@ -83,27 +72,29 @@ public class Principal extends javax.swing.JFrame {
         });
 
         JBMostrar_Contas.setText("Mostrar Contas");
+        JBMostrar_Contas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JBMostrar_ContasActionPerformed(evt);
+            }
+        });
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jpDesktop, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(JBAlterar_Conta)
-                    .addComponent(JBRemover_Conta)
-                    .addComponent(JBMostrar_Contas)
-                    .addComponent(JBCriar_Conta, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap())
+        javax.swing.GroupLayout jpDesktopLayout = new javax.swing.GroupLayout(jpDesktop);
+        jpDesktop.setLayout(jpDesktopLayout);
+        jpDesktopLayout.setHorizontalGroup(
+            jpDesktopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 515, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpDesktopLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addGroup(jpDesktopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(JBCriar_Conta, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(JBAlterar_Conta, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpDesktopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(JBMostrar_Contas)
+                        .addComponent(JBRemover_Conta))))
         );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addComponent(jpDesktop, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
-            .addGroup(layout.createSequentialGroup()
+        jpDesktopLayout.setVerticalGroup(
+            jpDesktopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpDesktopLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(JBCriar_Conta, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -112,7 +103,23 @@ public class Principal extends javax.swing.JFrame {
                 .addComponent(JBRemover_Conta)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(JBMostrar_Contas)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 46, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jpDesktop, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addComponent(jpDesktop, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         pack();
@@ -135,6 +142,38 @@ public class Principal extends javax.swing.JFrame {
         jpDesktop.add(formularioDelete);
         formularioDelete.setVisible(true);
     }//GEN-LAST:event_JBRemover_ContaActionPerformed
+
+    private void JBMostrar_ContasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBMostrar_ContasActionPerformed
+        DefaultTableModel tabelaConta = (DefaultTableModel) jTableConta.getModel();
+        try {
+            limparTabela();
+            for (ContaModel conta : controller.getAll()) {
+                Object[] contaRow = new Object[]{
+                    conta.getNumeroConta(),
+                    conta.getNomeCliente(),
+                    conta.getRua(),
+                    conta.getNumeroCasa(),
+                    conta.getBairro(),
+                    conta.getCidade(),
+                    conta.getEstado(),
+                    conta.getCep()
+                };
+                tabelaConta.addRow(contaRow);
+            }
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+
+        //tabelaConta.addRow(rowData);
+    }//GEN-LAST:event_JBMostrar_ContasActionPerformed
+
+    private void limparTabela() {
+        DefaultTableModel tabelaConta = (DefaultTableModel) jTableConta.getModel();
+        int nLinhas = tabelaConta.getRowCount();
+        for (int i = 1; i <= nLinhas; i++) {
+            tabelaConta.removeRow(0);
+        }
+    }
 
     /**
      * @param args the command line arguments
@@ -177,7 +216,7 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JButton JBMostrar_Contas;
     private javax.swing.JButton JBRemover_Conta;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable jTableConta;
     private javax.swing.JPanel jpDesktop;
     // End of variables declaration//GEN-END:variables
 }

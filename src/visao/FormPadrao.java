@@ -271,7 +271,7 @@ public class FormPadrao extends javax.swing.JInternalFrame {
             //System.out.println(jtNome_Cliente.getText());
             controller.insert(conta);
             conta.imprimir();
-            //dispose();
+            dispose();
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }

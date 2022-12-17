@@ -26,13 +26,6 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
               <Component id="jpDesktop" max="32767" attributes="0"/>
-              <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="1" attributes="0">
-                  <Component id="JBAlterar_Conta" min="-2" max="-2" attributes="0"/>
-                  <Component id="JBRemover_Conta" alignment="1" min="-2" max="-2" attributes="0"/>
-                  <Component id="JBMostrar_Contas" min="-2" max="-2" attributes="0"/>
-                  <Component id="JBCriar_Conta" min="-2" pref="184" max="-2" attributes="0"/>
-              </Group>
               <EmptySpace min="-2" max="-2" attributes="0"/>
           </Group>
       </Group>
@@ -43,17 +36,6 @@
               <Component id="jpDesktop" max="32767" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
-          <Group type="102" alignment="0" attributes="0">
-              <EmptySpace max="-2" attributes="0"/>
-              <Component id="JBCriar_Conta" min="-2" pref="54" max="-2" attributes="0"/>
-              <EmptySpace max="-2" attributes="0"/>
-              <Component id="JBAlterar_Conta" min="-2" max="-2" attributes="0"/>
-              <EmptySpace max="-2" attributes="0"/>
-              <Component id="JBRemover_Conta" min="-2" max="-2" attributes="0"/>
-              <EmptySpace max="-2" attributes="0"/>
-              <Component id="JBMostrar_Contas" min="-2" max="-2" attributes="0"/>
-              <EmptySpace max="32767" attributes="0"/>
-          </Group>
       </Group>
     </DimensionLayout>
   </Layout>
@@ -63,17 +45,33 @@
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Component id="jScrollPane1" pref="509" max="32767" attributes="0"/>
+              <Component id="jScrollPane1" pref="515" max="32767" attributes="0"/>
+              <Group type="102" alignment="1" attributes="0">
+                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Component id="JBCriar_Conta" alignment="1" min="-2" pref="184" max="-2" attributes="0"/>
+                      <Component id="JBAlterar_Conta" alignment="1" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" alignment="1" groupAlignment="0" attributes="0">
+                          <Component id="JBMostrar_Contas" min="-2" max="-2" attributes="0"/>
+                          <Component id="JBRemover_Conta" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
               </Group>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" alignment="0" attributes="0">
-                  <Component id="jScrollPane1" min="-2" pref="311" max="-2" attributes="0"/>
-                  <EmptySpace pref="42" max="32767" attributes="0"/>
+              <Group type="102" alignment="1" attributes="0">
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="JBCriar_Conta" min="-2" pref="54" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="JBAlterar_Conta" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="JBRemover_Conta" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="JBMostrar_Contas" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace pref="46" max="32767" attributes="0"/>
+                  <Component id="jScrollPane1" min="-2" pref="160" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -86,10 +84,10 @@
 
           <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
           <SubComponents>
-            <Component class="javax.swing.JTable" name="jTable1">
+            <Component class="javax.swing.JTable" name="jTableConta">
               <Properties>
                 <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                  <Table columnCount="7" rowCount="6">
+                  <Table columnCount="8" rowCount="4">
                     <Column editable="true" title="NConta" type="java.lang.Object"/>
                     <Column editable="true" title="Nome User" type="java.lang.Object"/>
                     <Column editable="true" title="Rua" type="java.lang.Object"/>
@@ -97,48 +95,52 @@
                     <Column editable="true" title="Bairro" type="java.lang.Object"/>
                     <Column editable="true" title="Cidade" type="java.lang.Object"/>
                     <Column editable="true" title="Estado" type="java.lang.Object"/>
+                    <Column editable="true" title="Cep" type="java.lang.Object"/>
                   </Table>
                 </Property>
               </Properties>
             </Component>
           </SubComponents>
         </Container>
+        <Component class="javax.swing.JButton" name="JBCriar_Conta">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Tahoma" size="18" style="0"/>
+            </Property>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/img/create.png"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="Criar Conta"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="JBCriar_ContaActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JButton" name="JBAlterar_Conta">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Alterar Conta"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="JBAlterar_ContaActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JButton" name="JBRemover_Conta">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Remover Conta"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="JBRemover_ContaActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JButton" name="JBMostrar_Contas">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Mostrar Contas"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="JBMostrar_ContasActionPerformed"/>
+          </Events>
+        </Component>
       </SubComponents>
     </Container>
-    <Component class="javax.swing.JButton" name="JBCriar_Conta">
-      <Properties>
-        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Tahoma" size="18" style="0"/>
-        </Property>
-        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/img/create.png"/>
-        </Property>
-        <Property name="text" type="java.lang.String" value="Criar Conta"/>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="JBCriar_ContaActionPerformed"/>
-      </Events>
-    </Component>
-    <Component class="javax.swing.JButton" name="JBAlterar_Conta">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Alterar Conta"/>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="JBAlterar_ContaActionPerformed"/>
-      </Events>
-    </Component>
-    <Component class="javax.swing.JButton" name="JBRemover_Conta">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Remover Conta"/>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="JBRemover_ContaActionPerformed"/>
-      </Events>
-    </Component>
-    <Component class="javax.swing.JButton" name="JBMostrar_Contas">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Mostrar Contas"/>
-      </Properties>
-    </Component>
   </SubComponents>
 </Form>
